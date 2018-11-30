@@ -86,5 +86,5 @@ class ProveedorController extends Controller{
         $instancia = new Proveedor();
         $comunas = $instancia->getComunas();
         return response()->json($comunas); 
-    }    
+    } 
 }
