@@ -49,7 +49,11 @@ Route::post('/autorizacion-gerencia', 'Compra\AutorizacionController@autorizaGer
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+/*
+|--------------------------------------------------------------------------
+| Compra
+|--------------------------------------------------------------------------
+*/
 Route::get("download-pdf","HomeController@downloadPDF");
 Route::get("export","HomeController@export");
-
 Route::get("download-pdf-compra","Compra\HomeController@downloadPDF");
