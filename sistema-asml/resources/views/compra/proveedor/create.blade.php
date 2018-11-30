@@ -39,7 +39,8 @@
                   </div>
                   <div class="form-group col-md-3">
                      <label for="comuna">Comuna</label>
-                     <input type="text" class="form-control" id="comuna" name="comuna" placeholder="RUT">
+                     <select id="comuna" name="comuna" class="form-control">
+                     </select>                       
                   </div>
                   <div class="form-group col-md-3">
                      <label for="ciudad">Ciudad</label>

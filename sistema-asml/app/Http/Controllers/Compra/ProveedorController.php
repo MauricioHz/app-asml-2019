@@ -80,4 +80,11 @@ class ProveedorController extends Controller{
     {
         //
     }
+
+    public function getComunas()
+    {
+        $instancia = new Proveedor();
+        $comunas = $instancia->getComunas();
+        return response()->json($comunas); 
+    }    
 }

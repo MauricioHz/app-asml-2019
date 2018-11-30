@@ -7,6 +7,9 @@
       <link rel="stylesheet" href="http://foxythemes.net/preview/products/beagle/assets/lib/datatables/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
       <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
       <title>LS</title>
+
+   
+
       <style>
          .card-profile.text-center .card-profile-cover+.card-body .avatar {margin-top: -4.5rem;}
          .card-profile .card-body .avatar {width: 7rem;height: 7rem;border: .1875rem solid #fff;}
@@ -76,5 +79,7 @@
 
       <script src="{{ asset('js/bootstrap.js') }}"></script>
       <script src="{{ asset('js/proveedor.js') }}"></script>
+
+      <script src="{{ asset('js/compra/compra.parametro.js') }}"></script>
    </body>
 </html>
