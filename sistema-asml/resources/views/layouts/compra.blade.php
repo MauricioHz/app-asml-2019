@@ -6,10 +6,7 @@
       <link rel="stylesheet" href="http://foxythemes.net/preview/products/beagle/assets/lib/datatables/datatables.net-bs4/css/dataTables.bootstrap4.css">
       <link rel="stylesheet" href="http://foxythemes.net/preview/products/beagle/assets/lib/datatables/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
       <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
-      <title>LS</title>
-
-   
-
+      <title>Compras</title>  
       <style>
          .card-profile.text-center .card-profile-cover+.card-body .avatar {margin-top: -4.5rem;}
          .card-profile .card-body .avatar {width: 7rem;height: 7rem;border: .1875rem solid #fff;}
@@ -42,17 +39,28 @@
                         <a class="dropdown-item" href="#">Solicitudes pendientes</a>
                         <a class="dropdown-item" href="#">Solicitudes eliminadas</a>
                         <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Recepción de productos o servicios</a>                        
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Modificar solicitud</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Usuarios</a>
                         <a class="dropdown-item" href="#">Cargos</a>
                      </div>
                   </li> 
-
-                  <li class="nav-item">
-                     <a class="nav-link" href="#">Informes</a>
-                  </li>
- 
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle"
+                        href="#" id="dropdown07"
+                        data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">Informes</a>
+                     <div class="dropdown-menu"
+                        aria-labelledby="dropdown07">
+                        <a class="dropdown-item" href="{{ route('autorizacion.jefatura') }}">Ordenes de compra emitidas</a>
+                        <a class="dropdown-item" href="{{ route('autorizacion.finanzas') }}">Ordenes de compra por recepcionar</a>
+                        <a class="dropdown-item" href="{{ route('autorizacion.gerencia') }}">Ordenes de compra eliminadas</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ route('autorizacion.gerencia') }}">Flujo de autorizaciones</a>
+                     </div>
+               </li>      
                   <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle"
                            href="#" id="dropdown07"
@@ -60,11 +68,11 @@
                            aria-expanded="false">Autorizaciones</a>
                         <div class="dropdown-menu"
                            aria-labelledby="dropdown07">
-                           <a class="dropdown-item" href="{{ route('autorizacion.jefatura') }}">Autorizacion Jefatura</a>
-                           <a class="dropdown-item" href="{{ route('autorizacion.finanzas') }}">Autorizacion Gerencia Admin. y Finanzas</a>
-                           <a class="dropdown-item" href="{{ route('autorizacion.gerencia') }}">Autorizacion Gerencia General</a>
+                           <a class="dropdown-item" href="{{ route('autorizacion.jefatura') }}">Autorización Jefatura</a>
+                           <a class="dropdown-item" href="{{ route('autorizacion.finanzas') }}">Autorización Gerencia Admin. y Finanzas</a>
+                           <a class="dropdown-item" href="{{ route('autorizacion.gerencia') }}">Autorización Gerencia General</a>
                         </div>
-                     </li>                  
+                  </li>                  
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle"
                         href="#" id="dropdown07"

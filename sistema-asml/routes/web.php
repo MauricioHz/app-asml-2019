@@ -10,11 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 /*
@@ -42,7 +37,8 @@ Route::get('/proveedorIso/create/{id}', 'Compra\ProveedorIsoController@create')-
 Route::get('/getProveedores', 'Compra\ProveedorController@getProveedores')->name('proveedor.getProveedores');
 
 // autorizaciones
-Route::post('/autorizacion-jefatura', 'Compra\AutorizacionController@autorizaJefatura')->name('autorizacion.jefatura');
+Route::get('/autorizacion-jefatura', 'Compra\AutorizacionController@solicitudesPorAutorizar')->name('autorizacion.jefatura');
+
 Route::post('/autorizacion-finanzas', 'Compra\AutorizacionController@autorizafinanzas')->name('autorizacion.finanzas');
 Route::post('/autorizacion-gerencia', 'Compra\AutorizacionController@autorizaGerencia')->name('autorizacion.gerencia');
  
