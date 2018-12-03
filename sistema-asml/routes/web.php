@@ -57,3 +57,17 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get("download-pdf","HomeController@downloadPDF");
 Route::get("export","HomeController@export");
 Route::get("download-pdf-compra","Compra\HomeController@downloadPDF");
+
+/*
+|--------------------------------------------------------------------------
+| Cargo
+|--------------------------------------------------------------------------
+*/
+// Route::resource('cargo', 'Compra\CargoController');
+
+//Route::get('cargos', 'Compra\CargoController@index')->name('cargo.index');
+Route::get('/cargos', 'Compra\CargoController@index')->name('cargo.index');
+Route::get('/nuevo-cargo', 'Compra\CargoController@create')->name('cargo.create');
+
+
+

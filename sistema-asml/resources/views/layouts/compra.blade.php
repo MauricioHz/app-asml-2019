@@ -30,9 +30,25 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarsExample07">
                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
-                     <a class="nav-link" href="#">Orden de compra <span class="sr-only">(current)</span></a>
-                  </li>
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle"
+                        href="#" id="dropdown07"
+                        data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">Orden de compra</a>
+                     <div class="dropdown-menu"
+                        aria-labelledby="dropdown07">
+                        <a class="dropdown-item" href="#">Crear solicitud de compra</a>
+                        <a class="dropdown-item" href="#">Listar órdenes de compra</a>
+                        <a class="dropdown-item" href="#">Solicitudes pendientes</a>
+                        <a class="dropdown-item" href="#">Solicitudes eliminadas</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Modificar solicitud</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Usuarios</a>
+                        <a class="dropdown-item" href="#">Cargos</a>
+                     </div>
+                  </li> 
+
                   <li class="nav-item">
                      <a class="nav-link" href="#">Informes</a>
                   </li>
@@ -57,7 +73,8 @@
                      <div class="dropdown-menu"
                         aria-labelledby="dropdown07">
                         <a class="dropdown-item" href="{{ route('proveedor.create') }}">Nuevo proveedor</a>
-                        <a class="dropdown-item" href="{{ route('proveedor.index') }}">Proveedores</a>
+                        <a class="dropdown-item" href="{{ route('proveedor.index') }}">Proveedores nacionales</a>
+                        <a class="dropdown-item" href="{{ route('proveedor.index') }}">Proveedores extranjeros</a>
                      </div>
                   </li>
                   <li class="nav-item">
@@ -65,8 +82,7 @@
                   </li>                  
                </ul>
                <form class="form-inline my-2 my-md-0">
-                  <input class="form-control" type="text"
-                     placeholder="Search" aria-label="Search">
+                  <input class="form-control" type="text" placeholder="Buscar" aria-label="Search">
                </form>
             </div>
          </div>
