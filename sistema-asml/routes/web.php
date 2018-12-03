@@ -38,6 +38,7 @@ Route::get('/getProveedores', 'Compra\ProveedorController@getProveedores')->name
 
 // autorizaciones
 Route::get('/autorizacion-jefatura', 'Compra\AutorizacionController@solicitudesPorAutorizar')->name('autorizacion.jefatura');
+Route::post('/autorizarConfirmado', 'Compra\AutorizacionController@autorizarConfirmado')->name('autorizacion.respuesta');
 
 Route::post('/autorizacion-finanzas', 'Compra\AutorizacionController@autorizafinanzas')->name('autorizacion.finanzas');
 Route::post('/autorizacion-gerencia', 'Compra\AutorizacionController@autorizaGerencia')->name('autorizacion.gerencia');
