@@ -5,6 +5,7 @@
       <div class="card">
          <div class="card-header header-light">
             Crear proveedor
+            <a href="#" class="btn btn-primary btn-sm float-right">Proveedores</a>
          </div>
          <div class="card-body">
             @if ($errors->any())

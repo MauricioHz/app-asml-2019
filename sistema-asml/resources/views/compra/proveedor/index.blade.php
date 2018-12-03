@@ -4,6 +4,7 @@
     <div class="card">
             <div class="card-header header-light">
                     Proveedores
+                    <a href="#" class="btn btn-success btn-sm float-right">Nuevo proveedor</a>
             </div>
             <div class="card-body">
                     <table id="proveedores" class="table table-striped table-bordered table-hover" style="width:100%">
