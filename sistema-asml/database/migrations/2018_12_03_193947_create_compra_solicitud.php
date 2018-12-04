@@ -11,9 +11,9 @@ class CreateCompraSolicitud extends Migration
     {
         Schema::create('compra_solicitud', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('fecha', 100);
-            $table->string('rut', 100);
-            $table->string('dv', 100);
+            $table->dateTime('fecha');
+            $table->integer('rut');
+            $table->string('dv');
             $table->string('nombre', 100);
             $table->string('direccion', 100);
             $table->string('comuna', 100);
@@ -22,17 +22,17 @@ class CreateCompraSolicitud extends Migration
             $table->string('fax', 100);
             $table->string('email', 100);
             $table->string('contacto', 100);  
-            $table->string('tipo_solicitud', 100);
-            $table->string('solicitante', 100);
-            $table->string('jefe_autoriza', 100);
+            $table->integer('tipo_solicitud_id');
+            $table->integer('solicitante');
+            $table->integer('jefe_autoriza');
             $table->string('archivo_uno', 100);
             $table->string('archivo_dos', 100);
-            $table->string('neto', 100);
-            $table->string('iva', 100);
-            $table->string('exento', 100);
-            $table->string('monto_total', 100);
+            $table->decimal('neto', 16, 2);
+            $table->decimal('iva', 16, 2);
+            $table->decimal('exento', 16, 2);
+            $table->decimal('monto_total', 16, 2);
             $table->string('observaciones', 100);
-            $table->string('vigente', 100);            
+            $table->integer('vigente');            
             $table->timestamps();
         });
     }
