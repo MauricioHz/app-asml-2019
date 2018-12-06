@@ -22,6 +22,11 @@ class CreateUsersTable extends Migration
             $table->string('nameUser', 30);
             $table->string('apellidoPaterno', 30);
             $table->string('apellidoMaterno', 30);
+            $table->integer('rol_id');
+            $table->integer('modulo_oc');
+            $table->integer('modulo_ot');
+            $table->integer('modulo_nc');
+            $table->integer('vigente');             
             $table->rememberToken();
             $table->timestamps();
         });

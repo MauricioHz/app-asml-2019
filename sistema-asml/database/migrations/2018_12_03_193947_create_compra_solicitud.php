@@ -32,6 +32,7 @@ class CreateCompraSolicitud extends Migration
             $table->decimal('exento', 16, 2);
             $table->decimal('monto_total', 16, 2);
             $table->string('observaciones', 100);
+            $table->integer('tipo_proveedor');
             $table->integer('vigente');            
             $table->timestamps();
         });

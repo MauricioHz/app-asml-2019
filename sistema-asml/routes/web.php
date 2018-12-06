@@ -66,5 +66,12 @@ Route::get("download-pdf-compra","Compra\HomeController@downloadPDF");
 Route::get('/cargos', 'Compra\CargoController@index')->name('cargo.index');
 Route::get('/nuevo-cargo', 'Compra\CargoController@create')->name('cargo.create');
 
+/*
+|--------------------------------------------------------------------------
+| Solicitudes
+|--------------------------------------------------------------------------
+*/
+Route::get('/crear-solicitud-de-compras', 'Compra\SolicitudController@create')->name('solicitud.create');
 
+Route::post('/solicitud/show', 'Compra\SolicitudController@show')->name('solicitud.show');
 

@@ -13,6 +13,8 @@
          .avatar {font-size: 1rem;display: inline-flex;width: 48px;height: 48px;color: #fff;border-radius: 50%;background-color: #adb5bd;align-items: center;justify-content: center;}
          .form-control--muted {background: #EDF0F5;border-color: #EDF0F5;}
          .header-light{background-color: #fff;color: #2f1e8e;font-weight: bold;border-left: 4px solid #2f1e8e;}
+         .background-muted{background-color: #fff}
+         .btn-round {border-radius: 1.2rem;border: 0px;}
       </style>
    </head>
    <body>
@@ -34,7 +36,7 @@
                         aria-expanded="false">Orden de compra</a>
                      <div class="dropdown-menu"
                         aria-labelledby="dropdown07">
-                        <a class="dropdown-item" href="#">Crear solicitud de compra</a>
+                        <a class="dropdown-item" href="{{ route('solicitud.create') }}">Crear solicitud de compra</a>
                         <a class="dropdown-item" href="#">Listar órdenes de compra</a>
                         <a class="dropdown-item" href="#">Solicitudes pendientes</a>
                         <a class="dropdown-item" href="#">Solicitudes eliminadas</a>
@@ -44,7 +46,6 @@
                         <a class="dropdown-item" href="#">Modificar solicitud</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Usuarios</a>
-                        <a class="dropdown-item" href="#">Cargos</a>
                      </div>
                   </li> 
                   <li class="nav-item dropdown">
@@ -58,7 +59,7 @@
                         <a class="dropdown-item" href="{{ route('autorizacion.finanzas') }}">Ordenes de compra por recepcionar</a>
                         <a class="dropdown-item" href="{{ route('autorizacion.gerencia') }}">Ordenes de compra eliminadas</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ route('autorizacion.gerencia') }}">Flujo de autorizaciones</a>
+                        <a class="dropdown-item" href="{{ route('autorizacion.gerencia') }}">Tipos de compra (productos)</a>                                                
                      </div>
                </li>      
                   <li class="nav-item dropdown">
@@ -89,8 +90,8 @@
                      <a class="nav-link" href="#">Acerca de</a>
                   </li>                  
                </ul>
-               <form class="form-inline my-2 my-md-0">
-                  <input class="form-control" type="text" placeholder="Buscar" aria-label="Search">
+               <form class="form-inline my-2 my-md-0" action="{{ route('solicitud.show') }}" method="post">
+                  <input class="form-control" type="text" name="id" placeholder="Buscar" aria-label="Search">
                </form>
             </div>
          </div>

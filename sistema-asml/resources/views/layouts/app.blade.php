@@ -38,7 +38,7 @@ img.bg-image{
                 <img src="image/header-17.jpg" alt="Image" class="bg-image opacity-10">
                 <div class="container">
                   <div class="row justify-content-center">
-                    <div class="col-lg-5 col-md-7">
+                    <div class="col-lg-6 col-md-6">
                       <div class="card py-3 shadow-lg">
                             <div class="card-body">
                                     <h1 class="h2 text-center">Welcome back</h1>
