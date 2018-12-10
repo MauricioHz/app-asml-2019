@@ -25,6 +25,9 @@ class CreateCompraSolicitud extends Migration
             $table->integer('tipo_solicitud_id');
             $table->integer('solicitante');
             $table->integer('jefe_autoriza');
+            $table->dateTime('fecha_nivel_uno'); // jefatura
+            $table->dateTime('fecha_nivel_dos'); // finanzas
+            $table->dateTime('fecha_nivel_tres');// gerencia
             $table->string('archivo_uno', 100);
             $table->string('archivo_dos', 100);
             $table->decimal('neto', 16, 2);
