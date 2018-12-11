@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateCompraAutorizacion extends Migration
 {
-
+/**/
     public function up()
     {
         Schema::create('compra_autorizacion', function (Blueprint $table) {
