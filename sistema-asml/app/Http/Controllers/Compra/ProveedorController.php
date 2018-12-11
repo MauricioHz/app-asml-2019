@@ -22,6 +22,15 @@ class ProveedorController extends Controller{
         return response()->json($proveedores); //Proveedor::all());
     }
 
+    public function getProveedorPorRut($rut)
+    {
+        $proveedor = Proveedor::where('rut', $rut)->get();
+
+        dd($proveedor); return;
+
+        return response()->json($proveedor); 
+    }    
+
     public function create()
     {
         return view('compra.proveedor.create');

@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proveedor extends Model
 {
+    const NACIONAL = 1;
+    const EXTRANJERO = 2;
+
     protected $table = 'compra_proveedor';
 
     protected $fillable = [
