@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="http://insight.mediumra.re/assets/css/theme.css" rel="stylesheet">
     <style>
 section{
   position: relative;

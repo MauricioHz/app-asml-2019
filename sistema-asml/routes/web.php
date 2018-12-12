@@ -12,6 +12,8 @@
 */
 Auth::routes();
 
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,6 +73,7 @@ Route::get('/nuevo-cargo', 'Compra\CargoController@create')->name('cargo.create'
 | Solicitudes
 |--------------------------------------------------------------------------
 */
+Route::get('/solicitudes-de-compras', 'Compra\SolicitudController@index')->name('solicitud.index');
 Route::get('/crear-solicitud-de-compras', 'Compra\SolicitudController@create')->name('solicitud.create');
 Route::post('/crear-solicitud-confirma', 'Compra\SolicitudController@store')->name('solicitud.store');
 

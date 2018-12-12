@@ -16,21 +16,12 @@ class User extends Authenticatable
 
     const VIGENTE = '1';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name', 'email', 'password', 'nameUser', 'apellidoPaterno', 'apellidoMaterno', 'rol_id', 'modulo_oc', 'modulo_ot', 'modulo_nc', 'vigente'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
+
 }
