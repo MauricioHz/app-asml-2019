@@ -1,5 +1,6 @@
 $(document).ready(function () {
     getComunasCiudades();
+    getProveedorPorRut();
 });
 
 var urlComunas = "/api/getComunas";
@@ -15,4 +16,8 @@ function getComunasCiudades() {
         opciones.val("Colina");
         opcionesCiudad.val("Santiago");
     });
+}
+
+function getProveedorPorRut(rut) {
+    
 }

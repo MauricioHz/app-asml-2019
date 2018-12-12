@@ -10,18 +10,15 @@ class CreateCompraAutorizacion extends Migration
     public function up()
     {
         Schema::create('compra_autorizacion', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id');            
+            $table->integer('solicitante_id');
+            $table->integer('solicitud_id');            
+            $table->integer('jefatura_id');
             $table->dateTime('fecha_solicitante');
-            $table->integer('solicitante');
-            $table->integer('solicitud_id');
-            $table->dateTime('fecha_autoriza_jefatura');
-            $table->string('autoriza_jefatura');
-            $table->dateTime('fecha_autoriza_finanza');
-            $table->integer('autoriza_finanza');
-            $table->dateTime('fecha_autoriza_gerencia');
-            $table->integer('autoriza_gerencia');
+            $table->dateTime('fecha_jefatura');
+            $table->dateTime('fecha_finanza');
+            $table->dateTime('fecha_gerencia');
             $table->integer('vigente');            
-            $table->timestamps();
         });
     }
 

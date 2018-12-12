@@ -81,8 +81,10 @@
                         aria-expanded="false">Proveedor</a>
                      <div class="dropdown-menu"
                         aria-labelledby="dropdown07">
-                        <a class="dropdown-item" href="{{ route('proveedor.create') }}">Nuevo proveedor</a>
+                        <a class="dropdown-item" href="{{ route('proveedor.create') }}">Nuevo proveedor nacional</a>
                         <a class="dropdown-item" href="{{ route('proveedor.index') }}">Proveedores nacionales</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ route('proveedor.create') }}">Nuevo proveedor extranjero</a>
                         <a class="dropdown-item" href="{{ route('proveedor.index') }}">Proveedores extranjeros</a>
                      </div>
                   </li>

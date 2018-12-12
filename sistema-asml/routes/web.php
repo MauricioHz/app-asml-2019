@@ -72,6 +72,7 @@ Route::get('/nuevo-cargo', 'Compra\CargoController@create')->name('cargo.create'
 |--------------------------------------------------------------------------
 */
 Route::get('/crear-solicitud-de-compras', 'Compra\SolicitudController@create')->name('solicitud.create');
+Route::post('/crear-solicitud-confirma', 'Compra\SolicitudController@store')->name('solicitud.store');
 
 Route::post('/solicitud/show', 'Compra\SolicitudController@show')->name('solicitud.show');
 
