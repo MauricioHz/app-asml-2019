@@ -72,7 +72,8 @@ class ProveedorController extends Controller{
 
     public function show($id)
     {
-        //
+        $data['data'] = Proveedor::where('rut', $id)->get();
+        return response()->json($data, 200);
     }
 
     public function edit($id)

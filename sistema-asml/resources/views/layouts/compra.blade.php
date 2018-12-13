@@ -108,5 +108,6 @@
       <script src="{{ asset('js/proveedor.js') }}"></script>
 
       <script src="{{ asset('js/compra/compra.parametro.js') }}"></script>
+      <script src="{{ asset('js/compra/solicitud.js') }}"></script>
    </body>
 </html>

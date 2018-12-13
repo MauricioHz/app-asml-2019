@@ -20,4 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('getComunas', 'Compra\ProveedorController@getComunas');
 
-Route::get('getProveedorPorRut/{id}', 'Compra\ProveedorController@getProveedorPorRut');
+//Route::get('proveedor/{proveedor}', 'Compra\ProveedorController@getProveedorPorRut');
+
+Route::resource("/proveedor","Compra\ProveedorController");
