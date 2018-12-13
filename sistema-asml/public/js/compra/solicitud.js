@@ -24,7 +24,7 @@ $(document).ready(function () {
             "producto": $('#form-producto').val().trim(),
             "descripcion": $('#form-descripcion').val().trim(),
             "unidad": $('#form-unidad option:selected').val(),
-            "unidadNombre": $('#form-unidad').text(),
+            "unidadNombre": $('#form-unidad option:selected').text(),
             "cantidad": $('#form-cantidad').val().trim(),
             "precio": $('#form-precio').val().trim(),
             "esAfecto": ($('#form-afecto-impuesto').is(':checked')) ? 'SÍ' : "NO",
@@ -34,6 +34,19 @@ $(document).ready(function () {
     });
 
     $('#editar-producto').click(function () {
+        var classSelector = "." + "67d8bfb1-ad1f-d156-2feb-8f0f5130f008";
+        var $row = $(this).parents('tr');
+        var texto = $row.find('td:nth-child(5)').text();
+        var producto = {
+            "producto": $('#form-producto').val().trim(),
+            "descripcion": $('#form-descripcion').val().trim(),
+            "unidad": $(classSelector).val(),
+            "unidadNombre": $('#form-unidad option:selected').text(),
+            "cantidad": $('#form-cantidad').val().trim(),
+            "precio": $('#form-precio').val().trim(),
+            "esAfecto": ($('#form-afecto-impuesto').is(':checked')) ? 'SÍ' : "NO",
+            "total": 0
+        };
         editarProducto(producto);
     });
 
@@ -100,7 +113,7 @@ function agregarProducto(producto) {
     var guid = generarGuid();
     $('table#productos-seleccionados').append(
         '<tr id=' + guid + '>' +
-        '<td>item</td>' +
+        '<td><button type="button" class="btn btn-primary editar-producto">Editar</button></td>' +
         '<td>item</td>' +
         '<td>' + producto.producto + ' ' + producto.descripcion + '</td>' +
         '<td>' + producto.unidadNombre + '</td>' +
@@ -110,8 +123,8 @@ function agregarProducto(producto) {
         '<td>' + producto.esAfecto + '</td>' +
         '<input type="hidden" name="producto[]" value="' + producto.producto + '">' +
         '<input type="hidden" name="descripcion[]" value="' + producto.descripcion + '">' +
-        '<input type="hidden" name="unidad[]" value="' + producto.unidad + '">' +
-        '<input type="hidden" name="cantidad[]" value="' + producto.cantidad + '">' +
+        '<input type="hidden" class="' + guid + '" name="unidad[]" value="' + producto.unidad + '">' +
+        '<input type="hidden" class="' + guid + '" name="cantidad[]" value="' + producto.cantidad + '">' +
         '<input type="hidden" name="precio[]" value="' + producto.precio + '">' +
         '<input type="hidden" name="total[]"  value="' + producto.total + '">' +
         '<input type="hidden" name="afecto[]" value="' + producto.esAfecto + '">' +
