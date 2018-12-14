@@ -20,34 +20,49 @@ $(document).ready(function () {
     });
 
     $('#agregar-producto-pedido').click(function () {
+        var fila = 0;
+        if (cantidadFilasTablaProductos() !== 0) {
+            fila = cantidadFilasTablaProductos();
+        }
+
         var producto = {
+            "fila": fila,
             "producto": $('#form-producto').val().trim(),
             "descripcion": $('#form-descripcion').val().trim(),
             "unidad": $('#form-unidad option:selected').val(),
             "unidadNombre": $('#form-unidad option:selected').text(),
             "cantidad": $('#form-cantidad').val().trim(),
             "precio": $('#form-precio').val().trim(),
-            "esAfecto": ($('#form-afecto-impuesto').is(':checked')) ? 'SÍ' : "NO",
+            "esAfecto": ($('#form-afecto-impuesto').is(':checked')) ? '1' : "0",
             "total": 0
         };
         agregarProducto(producto);
     });
 
-    $('#editar-producto').click(function () {
-        var classSelector = "." + "67d8bfb1-ad1f-d156-2feb-8f0f5130f008";
-        var $row = $(this).parents('tr');
-        var texto = $row.find('td:nth-child(5)').text();
+    $(document).on("click", ".editar-producto", function () {
+        $('#editarProductoModal').modal('show');
+        var fila = $(this).attr('id');
         var producto = {
-            "producto": $('#form-producto').val().trim(),
-            "descripcion": $('#form-descripcion').val().trim(),
-            "unidad": $(classSelector).val(),
-            "unidadNombre": $('#form-unidad option:selected').text(),
-            "cantidad": $('#form-cantidad').val().trim(),
-            "precio": $('#form-precio').val().trim(),
-            "esAfecto": ($('#form-afecto-impuesto').is(':checked')) ? 'SÍ' : "NO",
-            "total": 0
+            "fila": fila,
+            "producto": $('input[name="producto[' + fila + ']"]').val(),
+            "descripcion": $('input[name="descripcion[' + fila + ']"]').val(),
+            "unidad": $("#e-form-unidad select").val($('input[name="unidad[' + fila + ']"]').val()),
+            "cantidad": $('input[name="cantidad[' + fila + ']"]').val(),
+            "precio": $('input[name="precio[' + fila + ']"]').val(),
+            "esAfecto": $('input[name="afecto[' + fila + ']"]').val()
         };
         editarProducto(producto);
+    });
+
+    $(document).on("click", ".eliminar-producto", function () {
+        $(this).parent().parent().remove();
+        $.each(['producto', 'descripcion', 'unidad', 'cantidad', 'precio'], function (index, value) {
+            reenumerarIndices(value);
+        });
+    });
+
+    $('#editar-producto-pedido').click(function () {
+
     });
 
     $('#remover-producto').click(function () {
@@ -110,33 +125,48 @@ function getCondicionPago(formaPago) {}
 
 function agregarProducto(producto) {
     producto.total = parseFloat(producto.precio).toFixed(2) * parseFloat(producto.cantidad).toFixed(2);
-    var guid = generarGuid();
+    //var guid = generarGuid();
+    var esAfectoValor = (producto.esAfecto === '1') ? "SÍ" : "NO";
     $('table#productos-seleccionados').append(
-        '<tr id=' + guid + '>' +
-        '<td><button type="button" class="btn btn-primary editar-producto">Editar</button></td>' +
+        '<tr>' +
+        '<td><button type="button" id="' + producto.fila + '" class="btn btn-primary editar-producto">Editar</button>' +
+        '<button type="button" class="btn btn-primary eliminar-producto">Remover</button></td>' +
         '<td>item</td>' +
         '<td>' + producto.producto + ' ' + producto.descripcion + '</td>' +
         '<td>' + producto.unidadNombre + '</td>' +
         '<td>' + producto.cantidad + '</td>' +
         '<td>' + producto.precio + '</td>' +
         '<td>' + producto.total + '</td>' +
-        '<td>' + producto.esAfecto + '</td>' +
-        '<input type="hidden" name="producto[]" value="' + producto.producto + '">' +
-        '<input type="hidden" name="descripcion[]" value="' + producto.descripcion + '">' +
-        '<input type="hidden" class="' + guid + '" name="unidad[]" value="' + producto.unidad + '">' +
-        '<input type="hidden" class="' + guid + '" name="cantidad[]" value="' + producto.cantidad + '">' +
-        '<input type="hidden" name="precio[]" value="' + producto.precio + '">' +
-        '<input type="hidden" name="total[]"  value="' + producto.total + '">' +
-        '<input type="hidden" name="afecto[]" value="' + producto.esAfecto + '">' +
+        '<td>' + esAfectoValor + '</td>' +
+        '<input type="hidden" class="producto" name="producto[' + producto.fila + ']" value="' + producto.producto + '">' +
+        '<input type="hidden" class="descripcion" name="descripcion[' + producto.fila + ']" value="' + producto.descripcion + '">' +
+        '<input type="hidden" class="unidad" name="unidad[' + producto.fila + ']" value="' + producto.unidad + '">' +
+        '<input type="hidden" class="catidad" name="cantidad[' + producto.fila + ']" value="' + producto.cantidad + '">' +
+        '<input type="hidden" class="precio" name="precio[' + producto.fila + ']" value="' + producto.precio + '">' +
+        '<input type="hidden" class="total" name="total[' + producto.fila + ']"  value="' + producto.total + '">' +
+        '<input type="hidden" class="afecto" name="afecto[' + producto.fila + ']" value="' + producto.esAfecto + '">' +
         '</tr>');
 
-    // calcularTotalFila(valor);
-    // calcularTotalFinal(valor);
+    //calcularTotalFila(valor);
+    calcularTotalFinal();
 }
 
 function editarProducto(producto) {
-    calcularTotalFila(valor);
-    calcularTotalFinal(valor);
+    $('#e-form-producto').val(producto.producto);
+    $('#e-form-descripcion').val(producto.descripcion);
+    $('#e-form-unidad selected').val(producto.unidad);
+    $('#e-form-cantidad').val(producto.cantidad);
+    $('#e-form-precio').val(producto.precio);
+    if (producto.esAfecto === '1') {
+        $('#e-form-afecto-impuesto').attr('checked', 'checked');
+    }
+
+    $.each(['producto', 'descripcion', 'unidad', 'cantidad', 'precio'], function (index, value) {
+        reenumerarIndices(value);
+    });
+
+    //calcularTotalFila(valor);
+    //calcularTotalFinal(valor);
 }
 
 function removerProducto(producto) {
@@ -146,7 +176,24 @@ function removerProducto(producto) {
 
 function calcularTotalFila(valor) {}
 
-function calcularTotalFinal(valor) {}
+function calcularTotalFinal() {
+    var suma, totalFila = 0;
+    $(".total").each(function (value) {
+        suma = suma + parseInt($('input[name="total[' + value + ']"]').val());
+    });
+    $('#neto').text(suma);
+}
+
+function cantidadFilasTablaProductos() {
+    return $('#productos-seleccionados tbody tr').length;
+}
+
+function reenumerarIndices(classSelector) {
+    $("[class=" + classSelector + "]").each(function (index) {
+        var nombreArray = classSelector + "[" + index + "]";
+        $(this).attr('name', nombreArray);
+    });
+}
 
 function generarGuid() {
     function s4() {

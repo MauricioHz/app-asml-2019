@@ -116,6 +116,26 @@
                      <tbody>
                      </tbody>
                   </table>
+                  <table class="table table-bordered mt-2">
+                     <tbody>
+                        <tr>
+                           <td colspan="8">Neto</td>
+                           <td id="neto"></td>
+                        </tr>
+                        <tr>
+                           <td colspan="8">Exento</td>
+                           <td id="exento"></td>
+                        </tr>
+                        <tr>
+                           <td colspan="8">IVA</td>
+                           <td id="iva"></td>
+                        </tr>
+                        <tr>
+                           <td colspan="8">Total</td>
+                           <td id="total"></td>
+                        </tr>
+                     </tbody>
+                  </table>
                </div>
             </div>
          </div>
@@ -137,7 +157,7 @@
    </form>
 </div>
 
-<!-- Modal -->
+<!-- Modal agregar -->
 <div class="modal fade" id="productoModal" tabindex="-1" role="dialog" aria-labelledby="productoModalLabel" aria-hidden="true">
    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
@@ -163,15 +183,15 @@
                <div class="form-group row">
                   <label for="form-producto" class="col-sm-2 col-form-label">Producto</label>
                   <div class="col-md-5">
-                     <input id="form-producto" type="text" placeholder="Nombre producto o servicio"
-                        class="form-control input-md" required="" maxlength="23" style="text-transform: uppercase">
+                     <input id="form-producto" type="text" placeholder="Nombre producto o servicio" class="form-control input-md"
+                        required="" maxlength="23" style="text-transform: uppercase">
                   </div>
                </div>
                <div class="form-group row">
                   <label for="form-descripcion" class="col-sm-2 col-form-label">Descripción</label>
                   <div class="col-md-8">
-                     <input id="form-descripcion" type="text" placeholder="Breve descripción ..."
-                        class="form-control input-md" required="" maxlength="45" style="text-transform: uppercase">
+                     <input id="form-descripcion" type="text" placeholder="Breve descripción ..." class="form-control input-md"
+                        required="" maxlength="45" style="text-transform: uppercase">
                   </div>
                </div>
                <div class="form-group row">
@@ -195,13 +215,15 @@
                <div class="form-group row">
                   <label class="col-sm-2 col-form-label" for="form-cantidad">Cantidad</label>
                   <div class="col-md-4">
-                     <input id="form-cantidad" type="number" min="1" max="99000000" class="form-control input-md" required="">
+                     <input id="form-cantidad" type="number" min="1" max="99000000" class="form-control input-md"
+                        required="">
                   </div>
                </div>
                <div class="form-group row">
                   <label class="col-sm-2 col-form-label" for="form-precio">Precio</label>
                   <div class="col-md-4">
-                     <input id="form-precio" type="number" min="1" max="99000000" class="form-control input-md" required="">
+                     <input id="form-precio" type="number" min="1" max="99000000" class="form-control input-md"
+                        required="">
                   </div>
                </div>
                <div class="form-group row">
@@ -220,6 +242,97 @@
          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             <button type="button" class="btn btn-primary" id="agregar-producto-pedido">Aceptar</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- Modal editar -->
+<div class="modal fade" id="editarProductoModal" tabindex="-1" role="dialog" aria-labelledby="productoModalLabel"
+   aria-hidden="true">
+   <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="productoModalLabel">Editar producto o servicio</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+            </button>
+         </div>
+         <div class="modal-body">
+            <div class="form-group">
+               <label for="e-tipo-compra">Tipo de compra</label>
+               <select class="form-control" id="e-tipo-compra">
+                  <option value="">Seleccionar ...</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+               </select>
+            </div>
+            <hr>
+            <div>
+               <div class="form-group row">
+                  <label for="e-form-producto" class="col-sm-2 col-form-label">Producto</label>
+                  <div class="col-md-5">
+                     <input id="e-form-producto" type="text" placeholder="Nombre producto o servicio" class="form-control input-md"
+                        required="" maxlength="23" style="text-transform: uppercase">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label for="e-form-descripcion" class="col-sm-2 col-form-label">Descripción</label>
+                  <div class="col-md-8">
+                     <input id="e-form-descripcion" type="text" placeholder="Breve descripción ..." class="form-control input-md"
+                        required="" maxlength="45" style="text-transform: uppercase">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label class="col-sm-2 col-form-label" for="e-form-unidad">Unidad</label>
+                  <div class="col-md-4">
+                     <select id="e-form-unidad" class="form-control">
+                        <option value="UN011">Unidad</option>
+                        <option value="UN001">Bandejas</option>
+                        <option value="UN002">Cajas</option>
+                        <option value="UN003">Centímetros</option>
+                        <option value="UN004">Estuches</option>
+                        <option value="UN005">Gramos</option>
+                        <option value="UN006">Kilos</option>
+                        <option value="UN007">Litros</option>
+                        <option value="UN008">Metros</option>
+                        <option value="UN009">Rollos</option>
+                        <option value="UN010">Toneladas</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label class="col-sm-2 col-form-label" for="e-form-cantidad">Cantidad</label>
+                  <div class="col-md-4">
+                     <input id="e-form-cantidad" type="number" min="1" max="99000000" class="form-control input-md"
+                        required="">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label class="col-sm-2 col-form-label" for="e-form-precio">Precio</label>
+                  <div class="col-md-4">
+                     <input id="e-form-precio" type="number" min="1" max="99000000" class="form-control input-md"
+                        required="">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label class="col-sm-2 col-form-label" for="e-form-afecto-impuesto"></label>
+                  <div class="col-md-4">
+                     <div class="checkbox">
+                        <label>
+                           <input type="checkbox" id="e-form-afecto-impuesto" value="on" checked="checked"> Afecto a
+                           impuesto IVA
+                        </label>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" id="editar-producto-pedido">Aceptar</button>
          </div>
       </div>
    </div>
