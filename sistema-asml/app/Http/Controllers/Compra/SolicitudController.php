@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers\Compra;
 
+use App\User;
+use App\Models\Compra\Estado;
+use Illuminate\Http\Request;
 use App\Models\Compra\Solicitud;
 use App\Models\Compra\Proveedor;
-use App\Models\Compra\Estado;
-use App\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Auth\Guard;
 
 class SolicitudController extends Controller
 {
+    protected $userId;
+
+    public function __construct(Guard $auth)
+    {
+        $this->userId = $auth->id();
+    }
 
     public function index()
     {
@@ -29,6 +36,8 @@ class SolicitudController extends Controller
 
     public function store(Request $request)
     {
+        dd($request); return;
+
         $proveedor = Proveedor::where('rut', $request->rut);
 
         $solicitud = new Solicitud;
@@ -44,7 +53,7 @@ class SolicitudController extends Controller
         $solicitud->email = $proveedor->email;
         $solicitud->contacto = $proveedor->contacto;
         $solicitud->tipo_solicitud = $request->tipo_solicitud;
-        $solicitud->solicitante_id = $request->solicitante_id;
+        $solicitud->solicitante_id = $this->userId;
         $solicitud->jefatura_id = $request->jefatura_id;
         $solicitud->estado_jefatura = Estado::PENDIENTE;
         $solicitud->estado_finanzas = Estado::PENDIENTE;
@@ -59,7 +68,6 @@ class SolicitudController extends Controller
         $solicitud->tipo_proveedor = $request->tipo_proveedor;
         $solicitud->leido = Estado::NO_LEIDO;
         $solicitud->vigente = Estado::VIGENTE;
-        $resultado = 
         $solicitud->save();
 
         //dd($request);

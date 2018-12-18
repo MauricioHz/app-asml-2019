@@ -71,6 +71,13 @@
                </div>
                <div class="card-body">
                   <div class="form-row">
+                     <label for="jefatura_id" class="col-sm-2 col-form-label">Jefatura</label>
+                     <div class="col-4">
+                        <select id="jefatura_id" name="jefatura_id" class="form-control">
+                        </select>
+                     </div>
+                  </div>
+                  <div class="form-row mt-2">
                      <div class="col-4">
                         <select id="tipo_proveedor" name="tipo_proveedor" class="form-control">
                            <option value="0" selected>Prioridad de la compra ...</option>
@@ -120,19 +127,19 @@
                      <tbody>
                         <tr>
                            <td colspan="8">Neto</td>
-                           <td id="neto"></td>
+                           <td id="neto" name="neto"></td>
                         </tr>
                         <tr>
                            <td colspan="8">Exento</td>
-                           <td id="exento"></td>
+                           <td id="exento" name="exento"></td>
                         </tr>
                         <tr>
                            <td colspan="8">IVA</td>
-                           <td id="iva"></td>
+                           <td id="iva" name="iva"></td>
                         </tr>
                         <tr>
                            <td colspan="8">Total</td>
-                           <td id="total"></td>
+                           <td id="total" name="total"></td>
                         </tr>
                      </tbody>
                   </table>
@@ -140,7 +147,19 @@
             </div>
          </div>
          <div class="tab-pane fade" id="confirmar" role="tabpanel" aria-labelledby="confirmar-tab">
-            <div class="card">
+            <div class="card mt-2">
+               <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="archivo-uno" name="archivo_uno">
+                  <label class="custom-file-label" for="archivo-uno">Seleccionar archivo</label>
+               </div>
+            </div>
+            <div class="card mt-2">
+                  <div class="custom-file">
+                     <input type="file" class="custom-file-input" id="archivo-dos" name="archivo_dos">
+                     <label class="custom-file-label" for="archivo-dos">Seleccionar archivo</label>
+                  </div>
+               </div>            
+            <div class="card mt-2">
                <div class="card-header background-muted">
                   Confirmar envio de solicitud
                </div>

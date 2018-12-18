@@ -16,6 +16,26 @@ class User extends Authenticatable
 
     const VIGENTE = '1';
 
+    public function getNameAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function getNameUserAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function getApellidoPaternoAttribute($value)
+    {
+        return ucwords($value);
+    }
+
+    public function getApellidoMaternoAttribute($value)
+    {
+        return ucwords($value);
+    }
+
     protected $fillable = [
         'name', 'email', 'password', 'nameUser', 'apellidoPaterno', 'apellidoMaterno', 'rol_id', 'modulo_oc', 'modulo_ot', 'modulo_nc', 'vigente'
     ];
@@ -23,5 +43,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function scopeActive($consulta){
+        return $consulta->where('rol_id', self::JEFATURA);
+    }
 
 }

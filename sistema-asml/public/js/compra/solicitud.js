@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    getJefatura();
+
     $('#buscar-proveedor').click(function () {
         getProveedorPorRut($('#rut').val().trim());
     });
@@ -83,6 +85,12 @@ $(document).ready(function () {
 
 });
 
+/*
+| -------------------------------------------------------------
+| Funciones
+| -------------------------------------------------------------
+*/
+
 var urlComunas = "/api/proveedor/";
 
 function getProveedorPorRut(rut) {
@@ -108,6 +116,16 @@ function getProveedorPorRut(rut) {
             '<tr><td>Contacto</td><td>' + json.data[0].contacto + '</td></tr>' +
             '<tr><td>Email contacto</td><td>' + json.data[0].email_contacto + '</td></tr>'
         );
+    });
+}
+
+function getJefatura() {
+    var optiones = $("#jefatura_id");
+    $.getJSON("/api/getJefatura", function (data) {
+        optiones.append($("<option />").val('').text('Seleccionar ...'));
+        $.each(data.data, function (i, item) {
+            optiones.append($("<option />").val(item.id).text(item.name));
+        });
     });
 }
 
